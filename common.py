@@ -68,8 +68,7 @@ class Common:
                     result = (x,s.ratio())
             if result[0] == None:
                 raise ValueError
-            else:
-                return result[0]
+            return result[0]
 
         for outTest in outTests.keys():
             try:
