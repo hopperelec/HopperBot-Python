@@ -9,7 +9,7 @@ class ErrorHandling(commands.Cog):
 
     async def temp(self,ctx,text):
         self.bot.main.log(self,f"{str(ctx.author)} attempted to use the command {ctx.command} but got an error!\n{text}",ctx.guild)
-        if type(ctx.channel) == discord.TextChannel:
+        if type(ctx.channel) is discord.TextChannel:
             await ctx.send(text+f", {ctx.author.mention}",delete_after=10); await ctx.message.delete(delay=10)
         else:
             await ctx.send(text)
