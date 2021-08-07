@@ -55,7 +55,9 @@ class Economy(commands.Cog):
             cooldownTypes += [await self.mysql.fetchone()]
         return cooldownTypes
 
-    async def onCooldown(self,user_id,server_id,cooldowns=[]):
+    async def onCooldown(self,user_id,server_id,cooldowns=None):
+        if cooldowns is None:
+            cooldowns = []
         cooldowns = await self.getCooldownTypes(cooldowns+["global"])
         for cooldown in cooldowns:
             if cooldown["bucket"] == "user":
