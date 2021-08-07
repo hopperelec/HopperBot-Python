@@ -106,8 +106,7 @@ class Playlist(commands.Cog,WavelinkMixin):
         song,reason = self.bot.main.getSimilar(song,self.songs.keys(),outTests,"song")
         if postTest == None:
             return song,reason
-        else:
-            return song,postTest(song),reason
+        return song,postTest(song),reason
 
     @commands.command(hidden=True)
     @commands.check(is_owner)

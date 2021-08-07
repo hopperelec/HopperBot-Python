@@ -406,11 +406,10 @@ class Economy(commands.Cog):
                     if len(choices) == 0:
                         await ctx.send(f"There are no active members with a cash balance over {amount}, {ctx.author.mention}!")
                         return
-                    else:
-                        obj = choice(choices)
-                        cash = obj["cash"]
-                        member = ctx.guild.get_member(obj["user_id"])
-                        await ctx.send(f"No member was specified, {ctx.author.mention}, so I have chosen {member.name}#{member.discriminator} by random!")
+                    obj = choice(choices)
+                    cash = obj["cash"]
+                    member = ctx.guild.get_member(obj["user_id"])
+                    await ctx.send(f"No member was specified, {ctx.author.mention}, so I have chosen {member.name}#{member.discriminator} by random!")
                 if cash >= amount:
                     await self.mysql.execute("SELECT inactiveTime FROM members WHERE user_id = %s and server_id = %s",(ctx.author.id,ctx.guild.id))
                     if (await self.mysql.fetchone())["inactiveTime"] >= datetime.now():
