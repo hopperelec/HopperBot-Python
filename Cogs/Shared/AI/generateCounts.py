@@ -16,7 +16,7 @@ def saveAuthorCounts(authorCounts):
 @lru_cache(10)
 def getCounts(ns=4,lengthWeight=1,lengthType=1,save=False):
     words = {k:getIn([formatM(message,ns) for message in v]) for k,v in data.items()}
-    authorCounts = {k:Counter(word for word in words[k]) for k in data.keys()}
+    authorCounts = {k:Counter(word for word in words[k]) for k in data}
     authorCounts = {author:{value:counts*(len(value.split() if lengthType == 0 else value)**lengthWeight) for value,counts in values.items() if counts >= 3} for author,values in authorCounts.items()}
     if save:
         saveAuthorCounts(authorCounts)

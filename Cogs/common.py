@@ -37,7 +37,7 @@ class Common(commands.Cog):
                     "description": command.description,
                     "alises": ", ".join(command.aliases)
                 }
-                embed.add_field(name=command.name,value="\n".join([f"{key}: {commandInfo[key]}" for key in commandInfo.keys()]),inline=False)
+                embed.add_field(name=command.name,value="\n".join([f"{key}: {commandInfo[key]}" for key in commandInfo]),inline=False)
             embed.set_footer(text="Created by HopperElecYT#2211")
             await ctx.send(embed=embed)
 
