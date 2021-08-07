@@ -11,7 +11,7 @@ from json import dump as jsonwrite, load as jsonread
 
 def saveAuthorCounts(authorCounts):
     with open('authorCounts.json','w+') as jsonfile:
-        jsonwrite({k:{k:v for k,v in sorted(v.items(),key=lambda item:item[1],reverse=True)} for k,v in authorCounts.items()},jsonfile,indent=4)
+        jsonwrite({k:dict(sorted(v.items(),key=lambda item:item[1],reverse=True)) for k,v in authorCounts.items()},jsonfile,indent=4)
 
 @lru_cache(10)
 def getCounts(ns=4,lengthWeight=1,lengthType=1,save=False):
@@ -46,7 +46,7 @@ authorCounts = probabilityCounts(authorCounts,probabilityWeight)
 
 # Output
 for key in authorCounts.keys():
-    print(key+':',', '.join(list({k:{k:v for k,v in sorted(v.items(),key=lambda item:item[1],reverse=True)} for k,v in authorCounts.items() if k == key}[key].keys())[:100])+"\n")
+    print(key+':',', '.join(list({k:dict(sorted(v.items(),key=lambda item:item[1],reverse=True)) for k,v in authorCounts.items() if k == key}[key].keys())[:100])+"\n")
 
 # Use accuracy to try and find the best combination of weights
 input("Press any key to run accuracy test...")
