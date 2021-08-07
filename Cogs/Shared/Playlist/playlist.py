@@ -120,7 +120,8 @@ class Playlist(commands.Cog,WavelinkMixin):
             await ctx.send(f"Playing `{song}` as the input is {reason}, {ctx.author.mention}!")
             await self.setTrack(forcedsong=song)
 
-    def lengthFormat(self,length):
+    @staticmethod
+    def lengthFormat(length):
         decimal = str(round(length%60))
         return f"{floor(length/60)}:{('0' if len(decimal) == 1 else '')+decimal}"
 
