@@ -160,7 +160,7 @@ class AI(commands.Cog):
             await ctx.send(f"Invalid integer '{minMessages}', {ctx.author.mention}!")
         place = 0
         embed = self.longestWritersEmbed.copy()
-        for sender in [k for k in self.authorMessageLength.keys() if self.authorMessageCount[k] >= minMessages][:15]:
+        for sender in [k for k in self.authorMessageLength if self.authorMessageCount[k] >= minMessages][:15]:
             place += 1
             embed.add_field(name=f"{place}: {sender}",value=self.authorMessageLength[sender])
         await ctx.send(embed=embed)
