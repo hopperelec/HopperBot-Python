@@ -30,7 +30,8 @@ class Info(commands.Cog):
         
         self.bot.main.started(self.names[0])
         
-    def guild_check(self,guild):
+    @staticmethod
+    def guild_check(guild):
         async def predicate(ctx):
             print(ctx.guild.id)
             print(guild)
