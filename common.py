@@ -15,7 +15,7 @@ class Common:
             self.config = jsonload(jsonfile)
 
     def setup(self,names):
-        servers = [server for server in self.config["servers"] if any([name in [extension["name"] for extension in server["used_extensions"]] for name in names])]
+        servers = [server for server in self.config["servers"] if any(name in [extension["name"] for extension in server["used_extensions"]] for name in names)]
         configs = {server["id"]:next((extension for extension in server["used_extensions"] if extension["name"] == names[0]),{}) for server in servers}
         return servers,configs
 
