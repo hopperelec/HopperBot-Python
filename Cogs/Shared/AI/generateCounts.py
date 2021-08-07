@@ -52,7 +52,7 @@ for key in authorCounts.keys():
 input("Press any key to run accuracy test...")
 print('This may take a while so please be patient!')
 weights = [-1,-0.66,-0.33,0,0.33,0.66,1,1.33,1.66,2,2.33,2.66,3]
-messagesToTest = len(sorted(data.values(),key=lambda value:len(value))[0])
+messagesToTest = len(sorted(data.values(),key=len)[0])
 bestResult = [0,[[]]]
 results = {testN:{ngramWeight:{probabilityWeight:[] for probabilityWeight in weights} for ngramWeight in weights} for testN in range(1,9)}
 for testN in range(1,9):
