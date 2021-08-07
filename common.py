@@ -47,7 +47,8 @@ class Common:
     def started(self,name):
         self.log("main",f"{name} started after {int((time()-self.bot.extensiontime)*1000)}ms")
 
-    def clearLogs(self):
+    @staticmethod
+    def clearLogs():
         from os import walk
         for root, dirs, files in walk("./", topdown=False):
             for name in files:
@@ -55,7 +56,8 @@ class Common:
                     with open(root+"/logs.txt","w") as logfile:
                         logfile.write("")
 
-    def getSimilar(self,getFrom,inList,outTests,name):
+    @staticmethod
+    def getSimilar(getFrom,inList,outTests,name):
         def similar(data,cutoff):
             result = (None,0)
             s = SequenceMatcher()
